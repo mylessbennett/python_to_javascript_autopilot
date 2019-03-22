@@ -17,3 +17,13 @@ function pickUpPassenger(car) {
     return `Picked up passenger. Car now has ${car.passengers} passengers.`
 }
 
+function getDestination(car) {
+    if (car.city == 'Toronto') {
+        return 'Mississauga';
+    } else if (car.city == 'Mississauga') {
+        return 'London';
+    } else if (car.city == 'London') {
+        return 'Toronto';
+    }
+}
+
