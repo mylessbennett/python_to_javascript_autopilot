@@ -27,3 +27,13 @@ function getDestination(car) {
     }
 }
 
+function fillUpGas(car) {
+    oldGas = car.gas;
+    car.gas = 100;
+    return `Filled up to ${getGasDisplay(car.gas)} on gas from ${getGasDisplay(oldGas)}.`;
+
+}
+
+function getGasDisplay(gas_amount) {
+    return `${gas_amount}%`;
+}
