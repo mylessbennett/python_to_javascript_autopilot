@@ -38,13 +38,13 @@ function getGasDisplay(gas_amount) {
     return `${gas_amount}%`;
 }
 
-function drive(car, city_distance) {
-    if (car.gas < city_distance) {
+function drive(car, cityDistance) {
+    if (car.gas < cityDistance) {
         return fillUpGas(car);
     }
 
     car.city = getDestination(car);
-    car.gas -= city.distance;
+    car.gas -= cityDistance;
     return `Drove to ${car.city}. Remaining gas: ${getGasDisplay(car.gas)}`
 }
 
@@ -65,10 +65,26 @@ function act(car) {
         return fillUpGas(car);
     }
 
-    droveTo = drive(car, distanceBetweenCities);
-    passengersDropped = dropOffPassengers(car);
+    let droveTo = drive(car, distanceBetweenCities);
+    let passengersDropped = dropOffPassengers(car);
     return `${droveTo} ${passengersDropped}`
 }
 
+function commandFleet(cars) {
+    for (let i = 0; i < cars.length; i++) {
+        let action = act(cars[i]);
+        console.log(`Car ${i + 1}: ${action}`)
+    }
+    console.log("---")
+}
 
+function addOneCarPerDay(cars, numDays) {
+    for (let i = 0; i < numDays; i++) {
+        newCar = getNewCar();
+        console.log(addCar(cars, newCar));
+        commandFleet(cars);
+    }
+}
 
+let cars = [];
+addOneCarPerDay(cars, 10);
